@@ -27,6 +27,11 @@ public class TestPangram {
 		String panRef = null;
 		Assert.assertFalse(pangram.isPanagram(panRef));
 	}
+	
+	@Test
+	public void testAllNull() {
+		Assert.assertFalse(pangram.isPanagram(null));
+	}
 
 	@Test
 	public void testSpecialCharacters() {
