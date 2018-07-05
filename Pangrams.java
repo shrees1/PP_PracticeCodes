@@ -32,17 +32,16 @@ public class Pangrams {
 		if (matcher.find()) {
 			throw new InputMismatchException("ERROCODE1: Invalid input value");
 		} else {
-			char[] panChar = str.toCharArray();
-			int[] albhabets = new int[26];
-			for (int i = 0; i < panChar.length; i++) {
-				if (str.charAt(i) >= 97 && str.charAt(i) <= 122)
-					albhabets[str.charAt(i) - 97]++;
+			boolean[] alphabets = new boolean[26];
+			for (int i = 0; i < str.length(); i++) {
+				alphabets[str.charAt(i) - 97] = true;
 			}
-			if (albhabets.length == 26) {
-				return true;
-			} else {
-				return false;
+			for (int i = 0; i < 26; i++) {
+				if (alphabets[i] == false) {
+					return false;
+				}
 			}
+			return true;
 		}
 	}
 }
