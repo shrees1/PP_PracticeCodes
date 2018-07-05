@@ -24,6 +24,12 @@ public class PangramTest {
 		String panRef = "Shikha Shree";
 		Assert.assertFalse(Pangrams.isPangram(panRef));
 	}
+	
+	@Test
+	public void falseCase2Test() {
+		String panRef = "aaaaaaaaaaaaaaaaaaaaaaaaaa";
+		Assert.assertFalse(Pangrams.isPangram(panRef));
+	}
 
 	@Test(expected = NullPointerException.class)
 	public void testAllNull() {
