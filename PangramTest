@@ -19,7 +19,7 @@ public class PangramTest {
 		Assert.assertTrue(Pangrams.isPangram(panRef));
 	}
 
-	@Test
+	@Test(expected = InputMismatchException.class)
 	public void falseCaseTest() {
 		String panRef = "Shikha Shree";
 		Assert.assertFalse(Pangrams.isPangram(panRef));
