@@ -1,7 +1,5 @@
 import java.util.InputMismatchException;
 
-import javax.xml.bind.ValidationException;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
