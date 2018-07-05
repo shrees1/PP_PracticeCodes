@@ -1,21 +1,49 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author shshree
+ * Testing whether a given string is a pangram
+ */
 public class Pangrams {
-	public boolean isPanagram(String panRef) {
-		boolean isString = panRef instanceof String;
-		if (!isString) {
-			return false;
+
+	/**
+	 * 
+	 * @param panRef
+	 * @return boolean
+	 *
+	 */
+	public static boolean isPangram(String panRef) {
+
+		if(panRef==null) {
+			throw new NullPointerException("ERRORCODE: Value cannot be null");
 		}
-		String str = panRef.toLowerCase().replaceAll("[^a-zA-Z]+", "");
+
+		if(panRef.length() < 26) {
+			throw new InputMismatchException("ERRORCODE: String doesn't qualify to be pangram so further checks won't happen");
+		}
+		String str = panRef.toLowerCase().replaceAll("\\s+", "");
+		Pattern regex = Pattern.compile("[$&+,:;=?@#|'<>.-^*()%!]");
+		//matcher to find if there is any special character in string
+		Matcher matcher = regex.matcher(str);
+
+		if(matcher.find())
+		{
+			throw new InputMismatchException("ERROCODE1: Invalid input value");
+		}
 		char[] panChar = str.toCharArray();
-		Set panSet = new HashSet();
-		for (char c : panChar) {
-			panSet.add(c);
+		int[] albhabets = new int[26];
+		for(int i=0; i<panChar.length;i++) {
+			if(str.charAt(i)>=97 && str.charAt(i)<=122)
+				albhabets[str.charAt(i)-97]++;
 		}
-		if (panSet.size() == 26)
+		if(albhabets.length==26) {
 			return true;
-		else
+		}
+		else {
 			return false;
+		}
 	}
 }
